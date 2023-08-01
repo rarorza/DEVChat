@@ -15,7 +15,7 @@ Study project made in Flask, being a forum for developers. <br/>
 `$ python run` or `$ flask --app app run`
 
 <p align="center">
-  <img alt="Project screenshot 1" src="./.github/screen_1.png" width="100%">
-  <img alt="Project screenshot 2" src="./.github/screen_2.png" width="100%">
-  <img alt="Project screenshot 3" src="./.github/screen_3.png" width="100%">
+  <img alt="Project screenshot 1" src="./.github/screen_0.png" width="100%">
+  <img alt="Project screenshot 2" src="./.github/screen_1.png" width="100%">
+  <img alt="Project screenshot 3" src="./.github/screen_2.png" width="100%">
 </p>
