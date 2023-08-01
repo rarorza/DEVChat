@@ -1,0 +1,88 @@
+{% extends 'base.html' %} {% block body %}
+<div class="container">
+  <h1>Login or create your account</h1>
+  <hr />
+  <div class="row">
+    <div class="col">
+      <form method="POST" action="" class="border p-4 mt-2">
+        {{ form_signin.csrf_token }}
+        <legend>SignIn</legend>
+        <fieldset>
+          <div class="form-group">
+            {{ form_signin.email.label(class="form-control-label") }} {% if
+            form_signin.email.errors %} {{ form_signin.email(class="form-control
+            is-invalid") }}
+            <div class="invalid-feedback">
+              {% for error in form_signin.email.errors %} {{error}} {% endfor %}
+            </div>
+            {% else %} {{ form_signin.email(class="form-control") }} {% endif %}
+          </div>
+          <div class="form-group">
+            {{ form_signin.pwd.label(class="form-control-label") }} {% if
+            form_signin.pwd.errors %} {{ form_signin.pwd(class="form-control
+            is-invalid") }}
+            <div class="invalid-feedback">
+              {% for error in form_signin.pwd.errors %} {{error}} {% endfor %}
+            </div>
+            {% else %} {{ form_signin.pwd(class="form-control") }} {% endif %}
+          </div>
+          <div class="form-group">
+            {{ form_signin.remember.label(class="form-check-label") }} {{
+            form_signin.remember(class="form-check-input") }}
+          </div>
+        </fieldset>
+        {{ form_signin.submit_signin(class="btn btn-primary mt-2") }}
+      </form>
+    </div>
+    <div class="col">
+      <form method="POST" action="" class="border p-4 mt-2">
+        {{ form_signup.csrf_token }}
+        <legend>SignUp</legend>
+        <fieldset>
+          <div class="form-group">
+            {{ form_signup.username.label(class="form-control-label") }} {% if
+            form_signup.username.errors %} {{
+            form_signup.username(class="form-control is-invalid") }}
+            <div class="invalid-feedback">
+              {% for error in form_signup.username.errors %} {{error}} {% endfor
+              %}
+            </div>
+            {% else %} {{ form_signup.username(class="form-control") }} {% endif
+            %}
+          </div>
+          <div class="form-group">
+            {{ form_signup.email.label(class="form-control-label") }} {% if
+            form_signup.email.errors %} {{ form_signup.email(class="form-control
+            is-invalid") }}
+            <div class="invalid-feedback">
+              {% for error in form_signup.email.errors %} {{error}} {% endfor %}
+            </div>
+            {% else %} {{ form_signup.email(class="form-control") }} {% endif %}
+          </div>
+          <div class="form-group">
+            {{ form_signup.pwd.label(class="form-control-label") }} {% if
+            form_signup.pwd.errors %} {{ form_signup.pwd(class="form-control
+            is-invalid") }}
+            <div class="invalid-feedback">
+              {% for error in form_signup.pwd.errors %} {{error}} {% endfor %}
+            </div>
+            {% else %} {{ form_signup.pwd(class="form-control") }} {% endif %}
+          </div>
+          <div class="form-group">
+            {{ form_signup.confirm_pwd.label }} {% if
+            form_signup.confirm_pwd.errors %} {{
+            form_signup.confirm_pwd(class="form-control is-invalid") }}
+            <div class="invalid-feedback">
+              {% for error in form_signup.confirm_pwd.errors %} {{error}} {%
+              endfor %}
+            </div>
+            {% else %} {{ form_signup.confirm_pwd(class="form-control") }} {%
+            endif %}
+          </div>
+        </fieldset>
+        {{ form_signup.submit_signup(class="btn btn-primary mt-2") }}
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

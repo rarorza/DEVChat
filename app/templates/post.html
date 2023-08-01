@@ -1,0 +1,73 @@
+{% extends 'base.html' %} {% block body %}
+<div class="container mt-3">
+  <div class="row border mt-4 p-3 post">
+    <div class="col col-2">
+      <div class="image pe-2">
+        <img
+          src="{{ url_for('static', filename='profile_pics/{}'.format(post.author.profile_pic)) }}"
+          class="rounded"
+          width="155"
+        />
+      </div>
+      <strong>{{ post.author.username }}</strong>
+      <div class="row justify-content-left">
+        <div style="text-align: left">
+          {% for interest in post.author.interests.split(";") %}
+          <button type="button" class="btn btn-dark mt-2" disabled>
+            {{ interest }}
+          </button>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+    <div class="col col-10">
+      <h3>
+        {{ post.title }}<small class="text-muted" style="font-size: 15px">
+          - Creation date: {{post.date.strftime('%d/%m/%Y')}} {% if form %} -
+          <a href="{{ url_for('edit_post', post_id=post.id) }}">Edit Post</a> /
+          <a href="#" data-bs-toggle="modal" data-bs-target="#deletePost"
+            >Delete Post</a
+          >
+          {% endif %}
+        </small>
+      </h3>
+      <p>{{ post.body }}</p>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div
+  class="modal fade"
+  id="deletePost"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Delete Post</h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">Do you really want to delete this post?</div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Cancel
+        </button>
+        <form
+          method="POST"
+          action="{{ url_for('delete_post', post_id=post.id) }}"
+        >
+          <button type="submit" class="btn btn-danger">Delete</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% block edit_post %} {% endblock %} {% endblock %}

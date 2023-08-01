@@ -1,0 +1,39 @@
+{% extends 'base.html' %} {% block body %}
+<div class="container">
+  <h1>DEV Chat</h1>
+  <h4>Forum for programmers</h4>
+  <hr />
+  {% for post in posts %}
+  <div class="row border mt-4 p-3 post">
+    <div class="col col-2">
+      <div class="image pl-2">
+        <img
+          src="{{ url_for('static', filename='profile_pics/{}'.format(post.author.profile_pic)) }}"
+          class="rounded"
+          width="155"
+        />
+      </div>
+      <strong>{{ post.author.username }}</strong>
+      <div class="row justify-content-left">
+        <div style="text-align: left">
+          {% for interest in post.author.interests.split(";") %}
+          <button type="button" class="btn btn-dark mt-2" disabled>
+            {{ interest }}
+          </button>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+    <div class="col col-10">
+      <a
+        href="{{ url_for('post', post_id=post.id) }}"
+        style="text-decoration: None"
+      >
+        <h3>{{ post.title }}</h3>
+      </a>
+      <p>{{ post.body }}</p>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}
