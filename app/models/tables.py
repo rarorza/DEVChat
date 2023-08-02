@@ -27,8 +27,9 @@ class User(db.Model, UserMixin):
 
     def verify_password(self, pwd):
         """
-        Verifica se o hash da senha digitada pelo usuário é compatível com o db
-        param pwd: Senha digitada pelo usuário
+        Checks that the hash of the password entered by the user is compatible
+        with the db
+        param pwd: Password entered by the user
         """
         return check_password_hash(self.password, pwd)
 
