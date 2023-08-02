@@ -18,9 +18,6 @@ class User(db.Model, UserMixin):
     password = db.Column(db.String(128), nullable=False)
     profile_pic = db.Column(db.String, default="default.png")
     posts = db.relationship("Post", backref="author", lazy=True)
-    # 'lazy=True' Faz com que todos os campos da tabela pai (user), sejam
-    # informados a tebela filho (posts)
-    # 'backref="autor"' identificação da tabela pai, nesse caso autor do post
     interests = db.Column(db.String, nullable=False, default="No info")
 
     def __init__(self, username, email, password):
